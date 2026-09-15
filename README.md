@@ -42,3 +42,4 @@ Execution logs were reviewed using Amazon CloudWatch Logs.
 - CloudWatch logging
 - Serverless architecture
 # aws-lambda-project
+# aws-lambda-project
