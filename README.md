@@ -1,43 +1,74 @@
-# AWS Lambda Function
+# AWS Lambda Greeting Function
 
-## Overview
-
-This project demonstrates the deployment and testing of a serverless AWS Lambda function.
-
-## AWS Services Used
-
-- AWS Lambda
-- IAM
-- CloudWatch
+A Python AWS Lambda function that accepts `first_name` and `last_name`, generates a greeting, logs it to CloudWatch, and returns the message.
 
 ## Function
 
-The Lambda function receives an event and returns an HTTP-style response.
+```python
+def lambda_handler(event, context):
 
-## Architecture
+    message = 'Hello {} {}! Keep being awesome!'.format(
+        event['first_name'],
+        event['last_name']
+    )
 
-Client/Event
-    ↓
-AWS Lambda
-    ↓
-Response
+    print(message)
 
-## Deployment
+    return {
+        'message': message
+    }
+```
 
-The function was created and deployed using the AWS Management Console.
+## Test Event
 
-## Testing
+```json
+{
+    "first_name": "Rul3",
+    "last_name": "Doe"
+}
+```
 
-The function was tested using the Lambda test event and locally on my Terminal before deploying to aws  management console.
+## Local Testing
 
-## Monitoring
+The function was also tested locally using:
 
-Execution logs were reviewed using Amazon CloudWatch Logs.
+```python
+if __name__ == "__main__":
+    test_event = {
+        "first_name": "Rul3",
+        "last_name": "Doe"
+    }
 
-## Lessons Learned
+    print(lambda_handler(test_event, None))
+```
 
+Run with:
+
+```bash
+python3 lambda_function.py
+```
+
+Output:
+
+```text
+Hello Rul3 Doe! Keep being awesome!
+```
+
+## AWS
+
+* **Lambda** — function execution
+* **CloudWatch** — execution logs
+* **IAM** — Lambda execution role
+
+## Skills
+
+`Python` `AWS Lambda` `CloudWatch` `IAM` `JSON` `Git`
+
+<<<<<<< HEAD
 - Creating Lambda functions
 - Lambda execution roles
 - Testing Lambda functions
 - CloudWatch logging
 - Serverless architecture
+=======
+>>>>>>>
